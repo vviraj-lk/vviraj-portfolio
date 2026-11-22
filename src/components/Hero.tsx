@@ -31,13 +31,6 @@ export const Hero: React.FC<HeroProps> = ({ navigate }) => {
             <p className="role-line">
               Technical Operations Engineer | Software Engineer | Production Support, Incident Handling &amp; Troubleshooting
             </p>
-            <div className="badges">
-              <span className="badge">MBCS</span>
-              <span className="badge">SCJP</span>
-              <span className="badge">12+ yrs experience</span>
-              <span className="badge">M.I.T. '26 · UCSC Colombo</span>
-              <span className="badge">7 Roles · 2013 – Present</span>
-            </div>
             <p className="lede">
               Building and maintaining the systems enterprises run on — from ERP integrations and database platforms to the infrastructure and helpdesk operations behind them.
             </p>
@@ -99,8 +92,46 @@ export const Hero: React.FC<HeroProps> = ({ navigate }) => {
               </a>
             </div>
           </div>
-          <div className="photo-frame">
-            <img className="photo-img" src="/profile.webp" alt="Vajira Viraj Nanayakkarawasam" />
+          <div className="hero-right">
+            <div className="photo-frame">
+              <img className="photo-img" src="/profile.webp" alt="Vajira Viraj Nanayakkarawasam" />
+            </div>
+
+            {/* Terminal Status Card */}
+            <div className="terminal-card glass">
+              <div className="terminal-header">
+                <span className="terminal-title">
+                  <span className="terminal-prompt">&gt;_</span> vvn.profile.status
+                </span>
+                <span className="terminal-status">ONLINE · 2026</span>
+              </div>
+              <div className="terminal-cli">
+                <span className="terminal-arrow">&gt;</span>
+                <span className="terminal-cursor" />
+              </div>
+              <div className="terminal-grid">
+                <div className="term-stat-card">
+                  <div className="term-stat-val term-val-gold">12+ Yrs</div>
+                  <div className="term-stat-sub">Dual-Track IT</div>
+                </div>
+                <div className="term-stat-card">
+                  <div className="term-stat-val">M.I.T. '26</div>
+                  <div className="term-stat-sub">UCSC Colombo</div>
+                </div>
+                <div className="term-stat-card">
+                  <div className="term-stat-val">MBCS</div>
+                  <div className="term-stat-sub">BCS UK Level 6</div>
+                </div>
+                <div className="term-stat-card">
+                  <div className="term-stat-val">SCJP</div>
+                  <div className="term-stat-sub">Sun Microsystems</div>
+                </div>
+              </div>
+              <div className="term-stat-row">
+                <div className="term-stat-val term-val-blue">7 Roles</div>
+                <div className="term-stat-date">2013 – Present</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
