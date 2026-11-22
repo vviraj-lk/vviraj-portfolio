@@ -1,0 +1,21 @@
+{
+  "name": "portfolio-vajira",
+  "version": "1.0.0",
+  "description": "Portfolio website for Vajira Viraj with modern Tailwind CSS framework, dynamic resume viewer, and Firebase hosting.",
+  "scripts": {
+    "build:css": "tailwindcss -i src/tailwind.css -o public/css/tailwind.css --minify",
+    "watch:css": "tailwindcss -i src/tailwind.css -o public/css/tailwind.css --watch"
+  },
+  "keywords": [
+    "portfolio",
+    "tailwind",
+    "firebase",
+    "resume"
+  ],
+  "author": "Vajira Viraj",
+  "license": "ISC",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.5",
+    "tailwindcss": "^4.3.5"
+  }
+}
