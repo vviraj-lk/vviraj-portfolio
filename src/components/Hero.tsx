@@ -1,13 +1,53 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { downloadDynamicResume, getTodayFormatted } from '../utils/pdfGenerator';
 
 interface HeroProps {
   navigate: (path: string) => void;
 }
 
+const TERMINAL_COMMANDS = [
+  'infra --check ad azure-ad fortigate',
+  'erp --sync sap-b1 oracle-apex mis',
+  'ai-dev --agent cursor vscode ci-cd',
+  'stack --verify laravel react docker',
+];
+
 export const Hero: React.FC<HeroProps> = ({ navigate }) => {
   const [downloadStatus, setDownloadStatus] = useState<string>('');
+  const [cmdIndex, setCmdIndex] = useState(0);
+  const [displayText, setDisplayText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
   const today = getTodayFormatted();
+
+  useEffect(() => {
+    const currentFullText = TERMINAL_COMMANDS[cmdIndex];
+    let timer: ReturnType<typeof setTimeout>;
+
+    if (!isDeleting && displayText === currentFullText) {
+      // Pause after typing completes
+      timer = setTimeout(() => {
+        setIsDeleting(true);
+      }, 1800);
+    } else if (isDeleting && displayText === '') {
+      // Pause briefly after erasing, then switch to next command
+      timer = setTimeout(() => {
+        setIsDeleting(false);
+        setCmdIndex((prev) => (prev + 1) % TERMINAL_COMMANDS.length);
+      }, 450);
+    } else {
+      // Type or delete characters
+      const delay = isDeleting ? 30 : 60;
+      timer = setTimeout(() => {
+        setDisplayText((prev) =>
+          isDeleting
+            ? currentFullText.substring(0, prev.length - 1)
+            : currentFullText.substring(0, prev.length + 1)
+        );
+      }, delay);
+    }
+
+    return () => clearTimeout(timer);
+  }, [displayText, isDeleting, cmdIndex]);
 
   const handleDownload = async () => {
     setDownloadStatus('Generating...');
@@ -107,6 +147,7 @@ export const Hero: React.FC<HeroProps> = ({ navigate }) => {
               </div>
               <div className="terminal-cli">
                 <span className="terminal-arrow">&gt;</span>
+                <span className="terminal-cmd">{displayText}</span>
                 <span className="terminal-cursor" />
               </div>
               <div className="terminal-grid">
