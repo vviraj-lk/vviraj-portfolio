@@ -60,7 +60,7 @@ export const Hero: React.FC<HeroProps> = ({ navigate }) => {
     <section className="hero">
       <div className="wrap">
         <div className="hero-panel glass">
-          <div>
+          <div className="hero-left">
             <div className="eyebrow-row">
               <span className="dot-live" />
               Colombo – Galle – Kalutara, Sri Lanka
